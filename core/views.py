@@ -6,7 +6,10 @@ from django.shortcuts import render
 
 # É a página principal
 def index(request):
-    return render(request, 'index.html')
+    context = {
+        'curso': 'Programaçaõ Web com Django Framework'
+    }
+    return render(request, 'index.html', context)
 
 def contato(request):
     return render(request, 'contato.html')
