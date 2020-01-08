@@ -31,6 +31,6 @@ urlpatterns = [
 
 # Para evitar de colocar cada path de cada caminho
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('painel/', admin.site.urls),
     path('', include('core.urls')),
 ]
