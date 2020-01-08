@@ -1,0 +1,4 @@
+* Para o pip3 funcionar:
+-> apt-get install -y python3-distutils
+
+* Aplicações que tem views
