@@ -123,5 +123,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+# Quando debug tá true usa o STATIC_URL, caso contrário usa o STATIC_ROOT
+STATIC_URL = '/static/' # Usado para o desenvolvimento
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Usado durante a produção
 
-STATIC_URL = '/static/'
+# python manage.pyu collectstatic copia todos os arquivos estáticos a pasta informada no STATIC_ROOT
