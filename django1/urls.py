@@ -31,6 +31,7 @@ urlpatterns = [
 
 # Para evitar de colocar cada path de cada caminho
 urlpatterns = [
+    # Evitar admin por segurança
     path('painel/', admin.site.urls),
     path('', include('core.urls')),
 ]

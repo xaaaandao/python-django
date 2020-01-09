@@ -7,6 +7,7 @@ For more information on this file, see
 https://docs.djangoproject.com/en/2.2/howto/deployment/wsgi/
 """
 
+# WSGI -> Padrão de aplicações Python para Web
 import os
 
 from django.core.wsgi import get_wsgi_application
