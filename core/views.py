@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Produto
 
 # Create your views here.
 # Views são sempre criadas na aplicação não no projeto
@@ -21,9 +22,11 @@ def index(request):
         teste = 'Usuário não logado'
     else:
         teste = 'Usuário logado'
+    produtos = Produto.objects.all()
     context = {
         'curso': 'Programaçaõ Web com Django Framework',
-        'logado': teste
+        'logado': teste,
+        'produtos': produtos
     }
     return render(request, 'index.html', context)
 
@@ -53,3 +56,9 @@ cliente.save()
 cliente.delete()
 '''
 
+def produto(request, pk):
+    prod = Produto.objects.get(id=pk)
+    context = {
+        'produto': prod
+    }
+    return render(request, 'produto.html', context)

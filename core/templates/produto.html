@@ -2,12 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Djano 1 - Index</title>
+    <title>Produto</title>
 </head>
 <body>
-    <H1> Index </H1>
-    <H2> {{ curso }} </H2>
-    <H2> {{ logado }} </H2>
+    <h1>Produto</h1>
     <table>
         <thead>
             <tr>
@@ -17,10 +15,9 @@
             </tr>
         </thead>
         <tbody>
-            {% for produto in produtos %}
-                <tr>
+               <tr>
                     <td>
-                        <a href="{% url 'produto' produto.id %}"> {{ produto.nome }} </a>
+                        <a href="{% url 'index' %}"> {{ produto.nome }} </a>
                     </td>
                     <td>
                         {{ produto.preco }}
@@ -29,9 +26,7 @@
                         {{ produto.estoque }}
                     </td>
                 </tr>
-                {% endfor %}
         </tbody>
     </table>
-
 </body>
 </html>
