@@ -26,7 +26,7 @@ SECRET_KEY = 'v9r@$0v0&iu-)-3r73aez84&6hkr!o+*s8z0buohwiiz=4ft-3'
 # True durante o desenvolvimento
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['django1-ch.herokuapp.com']
 
 # Para testar o DEBUG FALSE...
 # DEBUG = False
