@@ -24,7 +24,7 @@ SECRET_KEY = 'v9r@$0v0&iu-)-3r73aez84&6hkr!o+*s8z0buohwiiz=4ft-3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # True durante o desenvolvimento
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -128,3 +129,9 @@ STATIC_URL = '/static/' # Usado para o desenvolvimento
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Usado durante a produção
 
 # python manage.pyu collectstatic copia todos os arquivos estáticos a pasta informada no STATIC_ROOT
+
+# Para voltar para página inicial quando fizer logoff
+LOGOUT_REDIRECT_URL = 'index'
+
+# Whitenoise -> utilizado para que os estáticos funcionem na publicação
+# gunicorn -> Um substituto para o python manage.py runserver
