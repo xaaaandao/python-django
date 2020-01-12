@@ -1,0 +1,27 @@
+teste unitário -> testar partes ou unidades para ver se estão prontas para uso
+
+from django.test import TestCase
+
+# Create your tests here.
+
+def add_num(num):
+    return num + 1
+
+class SimplesTestCase(TestCase):
+
+    #roda toda vez
+    def setUp(self):
+        self.numero = 41
+        print('Iniciando o TestCase')
+
+    '''
+    testa a unidade de código
+    todo teste começa com test_
+    '''
+    def test_add_num(self):
+        valor = add_num(self.numero)
+        self.assertTrue(valor == 42)
+
+# Somente para testar meu projeto
+[run]
+source = .
