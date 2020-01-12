@@ -1,0 +1,8 @@
+from django.contrib.auth.models import User
+-> is_staff = True, ele pode acessar a area de administrador, mas ele não é um administrador
+angelina = User.objects.create_user(username='angelina', password='123456', email='angelina@gmail.com', is_staff=True)
+
+-> com o is_staff e is_superuser pode é administrador
+from django.contrib.auth.models import User
+adm = User.objects.create_user(username='darth', password='123456', email='darth@darkstart.com', is_staff=True, is_superuser=True)
+adm.save()
