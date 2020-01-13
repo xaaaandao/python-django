@@ -25,3 +25,9 @@ class SimplesTestCase(TestCase):
 # Somente para testar meu projeto
 [run]
 source = .
+
+# compila o arquivo .mo
+python manage.py compilemessages
+
+# gera o .po arquivo com as traduções
+python manage.py makemessages -l es

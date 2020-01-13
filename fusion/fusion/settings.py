@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -152,3 +153,7 @@ LOGOUT_REDIRECT_URL = 'index'
 
 # PARA RODAR COM GUNICORN:
 # gunicorn fusion.wsgi --log-file -
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
