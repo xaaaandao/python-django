@@ -1,0 +1,4 @@
+caso que precisa alterar o user model do django:
+* email da pessoa é usuário do sistema
+* ou cpf e senha
+* ou telefone e senha
