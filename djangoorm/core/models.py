@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 # Create your models here.
 
@@ -21,6 +22,10 @@ class Montadora(models.Model):
 
     def __str__(self):
         return self.nome
+
+def set_default_montadora():
+    # Cria uma montadora Padrão
+    return Montadora.objects.get_or_create(nome='Padrão')[0] # Retorna um objeto e boolean
 
 # OneToOne Field
 # Cada carro só pode ter relacionamento com um chassi (um pra um)
@@ -45,9 +50,29 @@ class Montadora(models.Model):
 # from core.models import Montadora
 # honda = Montadora.objects.get(pk=1)
 # carros = honda.carro_set.all()
+
+# (Many to Many)
+# Um carro pode ser dirigido por vários motoristas e um
+# motorista pode dirigir diversos carros
+# from core.models import Carro
+# carros = Carro.objects.all()
+# carro1 = carros.first()
+# mostra todos motoristas
+# motos1 = carro1.motoristas.all()
+# carro2 = carros.last()
+# motos2 = carro2.motoristas.all()
+# todos os carros que essa lista dirige
+# m1 = motos1.first()
+# carros = Carro.objects.filter(motoristas=m1)
+# carro que os dois motoristas dirigem, isso pq eh uma lista
+# carros = Carro.objects.filter(motoristas__in = motos1).distinct()
 class Carro(models.Model):
+    # Letras maiuscúlas são CONSTANTES
     chassi = models.OneToOneField(Chassi, on_delete=models.CASCADE)
+    # Se apagar set como default o que é 1
+    # montadora = models.ForeignKey(Montadora, on_delete=models.SET_DEFAULT, default=1)
     montadora = models.ForeignKey(Montadora, on_delete=models.CASCADE, blank=True)
+    motoristas = models.ManyToManyField(get_user_model())
     modelo = models.CharField('Modelo', max_length=30, help_text='Máximo 30 caracteres')
     preco = models.DecimalField('Preço', max_digits=8, decimal_places=2)
 
