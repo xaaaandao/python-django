@@ -9,27 +9,27 @@
 <body>
     <div class="container">
         <textarea id="sala" cols="70" rows="15"></textarea><br/>
-        <input id="texto" type="text" size="100"/><br/>
+        <input id="texto" type="text" size="50"/><br/>
         {% buttons %}
-            <input id="botao" type="button" value="Enviar"/>
+            <input id="botao" type="button" value="Enviar" />
         {% endbuttons %}
-        </textarea>
     </div>
+
 {% bootstrap_javascript jquery='full' %}
 <script>
     var nome_sala = {{ nome_sala_json }};
-    var chatSocker = new WebSocket(
-        'ws://' + window.location.host +
-        '/ws/chat/' + nome_sala + '/'
-    );
 
-    chatSocket.onmessage = function (e){
+    var chatSocket = new WebSocket(
+        'ws://' + window.location.host +
+        '/ws/chat/' + nome_sala + '/');
+
+    chatSocket.onmessage = function(e){
         var dados = JSON.parse(e.data);
         var mensagem = dados['mensagem'];
         document.querySelector('#sala').value += (mensagem + '\n');
     };
 
-    chatSocket.oneclose = function(e){
+    chatSocket.onclose = function(e){
         console.error('O chat encerrou de forma inesperada.');
     };
 
@@ -40,10 +40,10 @@
         }
     };
 
-    document.querySelector('#botao').onclick = function (e) {
+    document.querySelector('#botao').onclick = function(e){
         var mensagemInput = document.querySelector('#texto');
         var mensagem = mensagemInput.value;
-        chatSocket.send(JSON.stringfy({
+        chatSocket.send(JSON.stringify({
             'mensagem': mensagem
         }));
         mensagemInput.value = '';
