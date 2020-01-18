@@ -31,6 +31,9 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    # Sobreescreve as configurações...
+    'django_adminlte',
+    'django_adminlte_theme',
     'core',
     'bootstrap4',
     'django.contrib.admin',
